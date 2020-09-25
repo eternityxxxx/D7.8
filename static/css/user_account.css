@@ -1,0 +1,21 @@
+@font-face {
+    font-family: 'Roboto Mono';
+    src: url('../fonts/RobotoMono-Regular.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'Open Sans';
+    src: url('../fonts/OpenSans-Regular.ttf') format('truetype');
+}
+
+.text-header {
+    font-family: 'Roboto Mono', monospace;
+}
+
+li {
+    font-family: 'Open Sans', sans-serif;
+}
+
+.btn {
+    font-family: 'Roboto Mono', monospace;
+}

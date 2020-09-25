@@ -1,0 +1,80 @@
+{% extends 'base.html' %}
+
+{% block extra_head %}
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/user_account.css' %}">
+{% endblock extra_head %}
+
+{% block extra_title %}
+    Аккаунт
+{% endblock extra_title %}
+
+{% block links %}
+    <li class="nav-item mr-5">
+        <a href="{% url 'p_library:books_list' %}" class="nav-link">Список</a>
+    </li>
+    <li class="nav-item mr-5">
+        <a href="/" class="nav-link active">Аккаунт</a>
+    </li>
+{% endblock links %}
+
+{% block content %}
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-12">
+
+                <div class="user-photo text-center">
+                    {% if photo %}
+                    <img class="img-fluid" src="{{ photo.url }}" alt="Фото пользователя" width="100" height="100">
+                    {% else %}
+                    <svg width="100" height="100" viewBox="0 0 16 16" class="bi bi-person-square" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd" d="M14 1H2a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z"/>
+                        <path fill-rule="evenodd" d="M2 15v-1c0-1 1-4 6-4s6 3 6 4v1H2zm6-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
+                    </svg>
+                    {% endif %}
+                </div>
+
+                <div class="user-username text-center mt-4">
+                    <h4 class="text-header">Логин</h4>
+                    <li class="list-group-item list-group-item-info w-25 mx-auto"> {{ username }} </li>
+                </div>
+
+                <div class="user-firstname text-center mt-4">
+                    {% if firstname %}
+                    <h4 class="text-header">Имя</h4>
+                    <li class="list-group-item list-group-item-info w-25 mx-auto"> {{ firstname }} </li>
+                    {% endif %}
+                </div>
+
+                <div class="user-lastname text-center mt-4">
+                    {% if lastname %}
+                    <h4 class="text-header">Фамилия</h4>
+                    <li class="list-group-item list-group-item-info w-25 mx-auto"> {{ lastname }} </li>
+                    {% endif %}
+                </div>
+
+                <div class="user-age text-center mt-4">
+                    {% if age %}
+                    <h4 class="text-header">Возраст</h4>
+                    <li class="list-group-item list-group-item-info w-25 mx-auto"> {{ age }} </li>
+                    {% endif %}
+                </div>
+
+                <div class="user-age text-center mt-4">
+                    {% if github_url%}
+                    <h4 class="text-header">GitHub</h4>
+                    <li class="list-group-item list-group-item-info w-25 mx-auto"><a href="{{ github_url }}">{{ github_url }}</a></li>
+                    {% endif %}
+                </div>
+
+                <div class="text-center mt-5 mb-5">
+                    {% if profile %}
+                    <a href="{% url 'common:edit-profile' pk=user.profile_user.id %}" class="btn btn-success mr-3">Редактировать профиль</a>
+                    {% endif %}
+                    <a href="{% url 'common:logout' %}" class="btn btn-danger">Выйти</a>
+                </div>
+
+            </div>
+        </div>
+    </div>
+{% endblock content %}
